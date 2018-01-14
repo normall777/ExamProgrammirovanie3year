@@ -14,24 +14,16 @@ int main() {
 	{
 		cin >> mas[i];
 	}
-
 	for (int i = 0; i < n-sdvig; i++)
 	{
-		//cout << mas[i] << " ";
-		if (mas[i]==k)
-		{
-			sdvig++;
-			mas[i] = mas[i + sdvig];
-			i--;
-		}
-		else {
-			mas[i] = mas[i + sdvig];
-		}
+		while (mas[i + sdvig] == k) { sdvig++; }
+		mas[i] = mas[i + sdvig];
 	}
 	for (int i = n-sdvig; i < n; i++)
 	{
 		mas[i] = 0;
 	}
+	cout << endl;
 	for (int i = 0; i < n; i++)
 	{
 		cout << mas[i] << " ";
