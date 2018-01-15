@@ -2,21 +2,17 @@
 
 using namespace std;
 
-int exponenta(int a, int n, int sapas = 1) {
-	int result = 1;
-	if (n % 2 != 0 && n >= 2) {
-		sapas *= a;
-		n--;
+int exponenta(int n, int p) {
+	int r;
+	if (p == 1)
+		return n;
+	else if (p % 2 == 1)
+		return n * exponenta(n, p - 1);
+	else
+	{
+		r = exponenta(n, p / 2);
+		return r * r;
 	}
-	if (n % 2 == 0 && n >= 2) {
-		n = n / 2;
-		a = a*a;
-		result = a;
-		return exponenta(a, n, sapas);
-	}
-	result = a;
-	result *= sapas;
-	return result;
 }
 
 int main() {

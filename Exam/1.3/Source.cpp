@@ -30,10 +30,10 @@ int main() {
 	for (int i = 0; i < n-k; i++)
 	{
 		cin >> a;
+		if (a < max[0]) continue;
 		for (int j = 0; j < k; j++)
 		{
-			if (a < max[0]) break;
-			if (k - 1 == j || (a > max[j] && j+1 < k && a < max[j + 1])) { // Поиск места для вставки и сдвиг
+			if ((a > max[j] && j+1 < k && a < max[j + 1])||(j+1==k && a>max[j])) { // Поиск места для вставки и сдвиг
 				for (int k = 0; k < j; k++)
 				{
 					max[k] = max[k + 1];

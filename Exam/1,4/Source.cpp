@@ -13,17 +13,20 @@ int main() {
 	int k = PR+1;
 	int *mas = new int[k];
 	int counter = 0;
-
+	int maxChislo;
 	for (int i = 0; i < k; i++, counter++) // Стартовый массив
 	{
 		cin >> mas[i];
 	}
-
+	maxChislo = mas[0];
 	for (int i = 0; i < k; i++, counter++) // Поиск максимального произведения
 	{
 		if (counter >= n) break; // Делать пока вся последовательность не кончится
 		cin >> a;
-		if (mux < a*mas[i]) mux = a*mas[i]; 
+		if (mux < a*mas[i]) mux = a*mas[i];
+		if (mux < a*maxChislo) mux = a*maxChislo;
+		if (maxChislo < mas[i]) maxChislo = mas[i];
+		
 		mas[i] = a;
 
 		if (i == k - 1) i = -1;

@@ -1,2 +1,1 @@
-﻿  Source.cpp
-  2.1.vcxproj -> C:\Games\Алгоритмизация (Добряк)\Exam\Debug\2.1.exe
+﻿C:\Games\Алгоритмизация (Добряк)\GitHub\ExamProgrammirovanie3year\Exam\2.1\2.1.vcxproj : error MSB4057: в проекте нет целевого объекта "Deploy".

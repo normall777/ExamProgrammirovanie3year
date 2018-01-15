@@ -1,4 +1,1 @@
-﻿  Source.cpp
-c:\games\алгоритмизация (добряк)\exam\1.7\source.cpp(16): warning C4018: <: несоответствие типов со знаком и без знака
-c:\games\алгоритмизация (добряк)\exam\1.7\source.cpp(31): warning C4018: >: несоответствие типов со знаком и без знака
-  1.7.vcxproj -> C:\Games\Алгоритмизация (Добряк)\Exam\Debug\1.7.exe
+﻿C:\Games\Алгоритмизация (Добряк)\GitHub\ExamProgrammirovanie3year\Exam\1.7\1.7.vcxproj : error MSB4057: в проекте нет целевого объекта "Deploy".
