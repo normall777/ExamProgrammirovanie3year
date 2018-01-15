@@ -49,14 +49,11 @@ int main() {
 	string s;
 	cin >> s;
 	string **str = new string*[s.length()];
-	int **mas = new int*[s.length()];
 	for (int i = 0; i < s.length(); i++)
 	{
-		mas[i] = new int[s.length()];
 		str[i] = new string[s.length()];
 		for (int j = 0; j < s.length(); j++)
 		{
-			mas[i][j] = 0;
 			str[i][j] = "";
 		}
 	}
