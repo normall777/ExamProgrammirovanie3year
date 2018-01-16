@@ -1,12 +1,13 @@
 #include <iostream>
 #include <string>
+#include <map>
 
 using namespace std;
 
-string pal(string s, int l, int r, string** str) {
-	string p = "", pr = "", pl = "";
-	if (l == r)
-	{
+string pal(string s, int l, int r) {
+	static map<string, string> memory;
+	string p = "", pl = "", pr = "";
+	if (l == r) {
 		p = p + s[l];
 	}
 	else if (s[l] == s[r]) {
@@ -14,33 +15,32 @@ string pal(string s, int l, int r, string** str) {
 			p = p + s[l] + s[r];
 		}
 		else {
-			if (str[l][r] == "") {
-				str[l][r] = pal(s, l + 1, r - 1, str);
+			if (memory[s.substr(l + 1, r - l - 1)] == "") {
+				memory[s.substr(l + 1, r - l - 1)] = pal(s, l + 1, r - 1);
 			}
-			p = p + s[l] + str[l][r] + s[r];
+			p = p + s[l] + memory[s.substr(l + 1, r - l - 1)] + s[r];
 		}
 	}
 	else {
 		if (r - l == 1) {
-			pl = pl + s[l];
+			pl = s[l];
 		}
 		else {
-			if (str[l][r - 1] == "") {
-				str[l][r - 1] = pal(s, l, r - 1, str);
+			if (memory[s.substr(l, r - l)] == "") {
+				memory[s.substr(l, r - l)] = pal(s, l, r - 1);
 			}
-			pl = str[l][r - 1];
-
-			if (str[l+1][r] == "") {
-				str[l + 1][r] = pal(s, l + 1, r, str);
+			pl = memory[s.substr(l, r - l)];
+			if (memory[s.substr(l + 1, r - l)] == "") {
+				memory[s.substr(l + 1, r - l)] = pal(s, l + 1, r);
 			}
-			pr = str[l + 1][r];
+			pr = memory[s.substr(l + 1, r - l)];
 		}
 		if (pl.length() >= pr.length())
 			p = pl;
 		else
 			p = pr;
 	}
-	str[l][r] = p;
+	memory[s.substr(l, r - l + 1)] = p;
 	return p;
 }
 
@@ -48,16 +48,7 @@ int main() {
 	setlocale(LC_ALL, "Russian");
 	string s;
 	cin >> s;
-	string **str = new string*[s.length()];
-	for (int i = 0; i < s.length(); i++)
-	{
-		str[i] = new string[s.length()];
-		for (int j = 0; j < s.length(); j++)
-		{
-			str[i][j] = "";
-		}
-	}
-	cout << pal(s, 0, s.length() - 1, str) << endl;
+	cout << pal(s, 0, s.length()-1) << endl;
 	system("Pause");
 	return 0;
 }
