@@ -3,34 +3,40 @@
 
 using namespace std;
 
-int fact(int n) {
-	static vector<int> memory(n+1, 0);
-	static int sumMemory = n + 1;
-	if (sumMemory < n + 1) {
-		sumMemory = n + 1;
-		memory.resize(sumMemory);
-		for (int i = 0; i < sumMemory; i++)
-		{
-			cout << memory[i] << " ";
-		} 
-		cout << endl;
+int fact(int n, int a[100]) {
+	if (n == 0)
+		return 1;
+	if (a[n] == 0) {
+		a[n] = fact(n - 1, a)*n;
+		return a[n];
 	}
-
-	if (memory[n] != 0) return memory[n];
-	else {
-		memory[1] = 1;
-		memory[n] = n*fact(n - 1);
-		return memory[n];
-	}
+	else return a[n];
 }
+
+int memoize(int n, int a[], int(*f)(int, int*)) {
+	return a[n] = f(n, a);
+}
+
+int factmem(int n, int(*f)(int, int*))
+{
+	static int a[100];
+	static bool flag = false;
+	if (!flag) {
+		for (int i = 0; i < 100; i++) {
+			a[i] = 0;
+		}
+		flag = true;
+		a[0] = 1;
+		a[1] = 1;
+	}
+	if (a[n] == 0) return memoize(n, a, f);
+	return a[n];
+}
+
 
 int main() {
 	setlocale(LC_ALL, "Russian");
-	
-	cout << fact(5) << endl;
-	cout << fact(7) << endl;
-	cout << fact(9) << endl;
-	cout << fact(5) << endl;
+	cout << factmem(5,fact) << endl;
 	system("Pause");
 	return 0;
 }
