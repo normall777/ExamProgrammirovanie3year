@@ -8,7 +8,7 @@ int main() {
 	setlocale(LC_ALL, "Russian");
 	string slovo;
 	cin >> slovo;
-	char *sostav = new char[slovo.length()];
+	char *sostav = new char[slovo.length() / 2 + 1];
 	int counter = -1;
 	bool flag = true;
 	bool flagOfAdd = true;
@@ -43,6 +43,7 @@ int main() {
 			if (countOfNechet >= 2)
 			{
 				flag = false;
+				break;
 			}
 		}
 	}

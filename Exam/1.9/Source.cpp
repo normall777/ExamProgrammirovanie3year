@@ -70,8 +70,12 @@ int main() {
 			for (int k = 0; k < m; k++)
 			{
 				//cout << sedl[i][j][k] << " ";
-				if (sedl[i][j][k] == 2)
+				if (sedl[i][j][k] == 2) {
 					cout << j << " " << k << endl;
+					if (sedl[0][j][k] == sedl[1][j][k]) {
+						sedl[1][j][k] = 0;
+					}
+				}
 			}
 			//cout << endl;
 		}

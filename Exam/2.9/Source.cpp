@@ -86,7 +86,6 @@ void Sector() {
 int main() {
 	setlocale(LC_ALL, "Russian");
 	Sector();
-
 	show();
 	system("Pause");
 	return 0;

@@ -5,20 +5,14 @@ using namespace std;
 int fib(int n) {
 	int slog1 = 1;
 	int slog2 = 1;
-	bool flag = false;
-	for (int i = 2; i < n; i++)
+	int res;
+	for (int i = 3; i <= n; i++)
 	{
-		if (!flag) {
-			slog1 += slog2;
-			flag = true;
-		}
-		else {
-			slog2 += slog1;
-			flag = false;
-		}
+		res = slog1 + slog2;
+		slog1 = slog2;
+		slog2 = res;
 	}
-	if (!flag) return slog2;
-	if (flag) return slog1;
+	return res;
 }
 
 

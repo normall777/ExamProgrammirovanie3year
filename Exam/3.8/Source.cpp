@@ -33,10 +33,31 @@ int factmem(int n, int(*f)(int, int*))
 	return a[n];
 }
 
+//
+int fact1(int n) {
+	if (n <= 1) return 1;
+	return n*fact1(n - 1);
+}
+
+int mem(int n, int(*f)(int), vector<int>& mas) {
+
+	mas[n] = f(n);
+	return mas[n];
+}
+
+int factmem1(int n, int(*f)(int)) {
+	static vector<int> mas(100);
+	if (mas[n] == 0)
+		mem(n,f,mas);
+	return mas[n];
+
+}
+
+//
 
 int main() {
 	setlocale(LC_ALL, "Russian");
-	cout << factmem(5,fact) << endl;
+	cout << factmem1(5,fact1) << endl;
 	system("Pause");
 	return 0;
 }

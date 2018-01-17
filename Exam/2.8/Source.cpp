@@ -66,7 +66,6 @@ void exitWidth() {
 		}
 	}
 
-	
 	for (int i = 0; i < k; i++)
 	{
 		if (x[i] + 1 < m && lab[y[i]][x[i] + 1] == 0)
@@ -95,9 +94,6 @@ void exitWidth() {
 			k++;
 		}
 	}
-
-
-
 }
 
 int main() {

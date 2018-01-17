@@ -34,8 +34,6 @@ int recurse(int n, int start, int(*f)(int, int)) {
 		return f(recurse(n - 1, start, f), n);
 }
 
-
-
 int main() {
 	setlocale(LC_ALL, "Russian");
 	cout << fact(5) << endl;

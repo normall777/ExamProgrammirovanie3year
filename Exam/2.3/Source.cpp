@@ -10,10 +10,6 @@ int fib(int n) {
 	if (!initial) {
 		memo[0] = 1;
 		memo[1] = 1;
-		for (int i = 2; i < n; i++)
-		{
-			memo[i] = 0;
-		}
 		initial = true;
 	}
 	if (initial) {
